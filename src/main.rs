@@ -17,7 +17,10 @@ fn main() {
 
 }
 
-// Generic
+// Generics
+// Note: `T: std::cmp::PartialOrd` this means the generic type T implements a trait std::cmp::PartialOrd
+// Note: We implemented this trait to scope the body functionality only on the generic types that can be ordered
+// Without the trait the compiler will complain that there are so many types that won't run the comparison code
 fn largest<T: std::cmp::PartialOrd>(list_of_numbers:&Vec<T>)-> Result<&T,&str>
 {
     let mut max = list_of_numbers.get(0).ok_or("err")?;
